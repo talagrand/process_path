@@ -1,17 +1,18 @@
 [package]
 name = "process_path"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["Wesley Wiser <wwiser@gmail.com>", "Moritz Moeller <virtualritz@gmail.com>"]
-license = "MIT/Apache-2.0"
+license = "MIT OR Apache-2.0"
 repository = "https://github.com/wesleywiser/process_path"
 documentation = "https://docs.rs/process_path"
 readme = "README.md"
-edition = "2018"
+edition = "2021"
+rust-version = "1.82.0" # unsafe extern "C" syntax and &raw mut require 1.82+
 description = "Gets the path of the currently executing process or dynamic library."
 keywords = ["current", "process", "executable", "dylib", "dll"]
 
 [target.'cfg(windows)'.dependencies]
-winapi = { version = "0.3.9", features = ["errhandlingapi", "libloaderapi", "minwindef", "winerror" ] }
+windows-sys = { version = ">=0.59, <0.62", features = ["Win32_Foundation", "Win32_System_LibraryLoader"] }
 
 [target.'cfg(any(target_os="linux", target_os="freebsd", target_os="dragonfly", target_os="netbsd", target_os="macos", target_os="illumos", target_os="android"))'.dependencies]
-libc = "0.2.81"
+libc = "0.2.180"

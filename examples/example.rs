@@ -1,5 +1,3 @@
-extern crate process_path;
-
 use process_path::get_executable_path;
 
 fn main() {

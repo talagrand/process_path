@@ -10,12 +10,9 @@ library in the file system.
 Add this to your `Cargo.toml`:
 ```toml
 [dependencies]
-process_path = "0.1.4"
+process_path = "0.1.5"
 ```
-and this to your crate root:
-```rust
-use process_path;
-```
+
 ## Example
 This program prints its path to stdout:
 ```rust

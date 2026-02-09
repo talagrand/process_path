@@ -75,3 +75,20 @@ pub fn get_dylib_path() -> Option<PathBuf> {
         nix::get_dylib_path()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn executable_path() {
+        let path = get_executable_path().expect("get_executable_path() returned None");
+        assert!(path.exists(), "executable path does not exist: {path:?}");
+    }
+
+    #[test]
+    fn dylib_path() {
+        let path = get_dylib_path().expect("get_dylib_path() returned None");
+        assert!(path.exists(), "dylib path does not exist: {path:?}");
+    }
+}

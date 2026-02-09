@@ -9,12 +9,7 @@ pub(crate) fn get_dylib_path() -> Option<PathBuf> {
         dli_saddr: core::ptr::null_mut(),
     };
 
-    if unsafe {
-        libc::dladdr(
-            get_dylib_path as *const c_void,
-            &mut dl_info as *mut libc::Dl_info,
-        ) != 0
-    } {
+    if unsafe { libc::dladdr(get_dylib_path as *const c_void, &raw mut dl_info) != 0 } {
         if dl_info.dli_fname.is_null() {
             None
         } else {

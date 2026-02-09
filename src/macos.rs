@@ -1,9 +1,8 @@
 use libc::c_int;
 use std::{ffi::CStr, os::raw::c_char, path::PathBuf};
 
-extern "C" {
-    #[link(name = "dyld")]
-    fn _NSGetExecutablePath(buf: *mut c_char, bufsize: *mut u32) -> c_int;
+unsafe extern "C" {
+    unsafe fn _NSGetExecutablePath(buf: *mut c_char, bufsize: *mut u32) -> c_int;
 }
 
 pub fn get_executable_path() -> Option<PathBuf> {

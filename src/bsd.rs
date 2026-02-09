@@ -26,7 +26,7 @@ pub fn get_executable_path() -> Option<PathBuf> {
             mib.as_ptr(),
             4,
             buf.as_mut_ptr() as *mut c_void,
-            &mut cb as *mut size_t,
+            &raw mut cb,
             ptr::null(),
             0,
         )
